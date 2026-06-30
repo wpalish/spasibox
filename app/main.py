@@ -12,6 +12,7 @@ from pathlib import Path
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi import Request as HttpRequest
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
 from . import __version__
 from .db import Store
@@ -38,7 +39,8 @@ async def lifespan(app: FastAPI):
     yield
 
 
-app = FastAPI(title="Spasibox MVP", version=__version__, lifespan=lifespan)
+app = FastAPI(title="SaveEat MVP", version=__version__, lifespan=lifespan)
+app.mount("/static", StaticFiles(directory=str(_STATIC)), name="static")
 
 _LOCAL = {"127.0.0.1", "::1", "testclient", "localhost"}
 

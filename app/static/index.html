@@ -38,17 +38,24 @@
   h2{font-size:1.3rem;letter-spacing:-.01em;margin:.2rem 0 .2rem;}
   .sub{color:var(--muted);font-size:.92rem;margin-bottom:1.1rem;}
 
-  .hero{background:linear-gradient(135deg,var(--green-s),oklch(95% .045 95));border:1px solid var(--line);
-    border-radius:20px;padding:1.6rem 1.7rem;margin-bottom:1.3rem;display:flex;align-items:center;gap:1.2rem;}
-  .hero-txt{flex:1;min-width:0;}
-  .hero b{display:block;font-size:2rem;line-height:1.04;}
-  .hero .en{font-family:var(--display);font-style:italic;color:var(--green);font-size:1.1rem;margin-top:.1rem;}
-  .hero p{margin:.55rem 0 0;font-size:.88rem;color:var(--muted);max-width:540px;}
-  .hero-em{font-size:3.4rem;}
-  .pills{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:.85rem;}
-  .pill2{font-size:.78rem;font-weight:700;color:var(--green-d);border:1px solid var(--green);
-    border-radius:99px;padding:.32rem .75rem;background:oklch(100% 0 0/.45);}
-  @media(max-width:560px){.hero-em{display:none;} .hero b{font-size:1.55rem;}}
+  .hero{display:grid;grid-template-columns:1.25fr .9fr;gap:1.7rem;align-items:center;
+    background:linear-gradient(135deg,var(--green-s),oklch(96% .04 92));border:1px solid var(--line);
+    border-radius:24px;padding:2.1rem 2.3rem;margin-bottom:1.6rem;}
+  .hero-txt{min-width:0;}
+  .hero b{display:block;font-size:2.6rem;line-height:1.02;}
+  .hero .en{font-family:var(--display);font-style:italic;color:var(--green);font-size:1.25rem;margin-top:.15rem;}
+  .hero p{margin:.75rem 0 0;font-size:.92rem;color:var(--muted);max-width:520px;}
+  .pills{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:1.05rem;}
+  .pill2{font-size:.8rem;font-weight:700;color:var(--green-d);border:1px solid var(--green);
+    border-radius:99px;padding:.34rem .8rem;background:oklch(100% 0 0/.5);}
+  .hero-card{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3;}
+  .hero-card img{width:100%;height:100%;object-fit:cover;display:block;}
+  .hero-card .tag{position:absolute;right:.75rem;bottom:.75rem;background:oklch(100% 0 0/.95);border-radius:14px;
+    padding:.55rem .9rem;text-align:right;box-shadow:0 6px 18px oklch(20% .03 70/.28);}
+  .hero-card .tag b{display:block;font-size:1.4rem;font-family:var(--display);color:var(--ink);line-height:1.1;}
+  .hero-card .tag s{font-size:.78rem;color:var(--muted);}
+  .hero-card .tag em{font-size:.66rem;color:var(--green-d);font-weight:700;font-style:normal;display:block;margin-top:.1rem;}
+  @media(max-width:760px){.hero{grid-template-columns:1fr;padding:1.5rem 1.6rem;} .hero-card{display:none;} .hero b{font-size:1.9rem;}}
 
   .chips{display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.1rem;}
   .chip{border:1px solid var(--line);background:var(--surface);color:var(--muted);font-weight:600;font-size:.84rem;
@@ -59,11 +66,13 @@
   .box{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
     box-shadow:var(--shadow);cursor:pointer;transition:transform var(--ease) .16s,box-shadow .16s;display:flex;flex-direction:column;}
   .box:hover{transform:translateY(-3px);}
-  .box .top{height:96px;display:flex;align-items:center;justify-content:center;font-size:2.6rem;position:relative;
-    background:linear-gradient(135deg,var(--green-s),var(--amber-s));}
-  .box .disc{position:absolute;top:.6rem;left:.6rem;background:var(--amber);color:oklch(25% .05 60);font-weight:800;
+  .box .top{height:160px;position:relative;background-size:cover;background-position:center;background-color:var(--green-s);}
+  .box .top::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,oklch(22% .03 70/.32),transparent 55%);}
+  .box .catchip{position:absolute;left:.6rem;bottom:.55rem;z-index:2;background:oklch(100% 0 0/.93);color:var(--green-d);
+    font-weight:700;font-size:.68rem;text-transform:uppercase;letter-spacing:.04em;padding:.22rem .55rem;border-radius:7px;}
+  .box .disc{position:absolute;z-index:2;top:.6rem;left:.6rem;background:var(--amber);color:oklch(25% .05 60);font-weight:800;
     font-size:.78rem;padding:.2rem .55rem;border-radius:8px;}
-  .box .left{position:absolute;top:.6rem;right:.6rem;background:oklch(100% 0 0/.9);color:var(--ink);font-weight:700;
+  .box .left{position:absolute;z-index:2;top:.6rem;right:.6rem;background:oklch(100% 0 0/.92);color:var(--ink);font-weight:700;
     font-size:.72rem;padding:.2rem .55rem;border-radius:8px;}
   .box .left.fomo{background:var(--red);color:#fff;}
   .box .body{padding:.8rem .9rem 1rem;flex:1;display:flex;flex-direction:column;gap:.25rem;}
@@ -77,7 +86,7 @@
   /* модалка */
   .modal-bg{position:fixed;inset:0;background:oklch(20% .03 80/.45);display:grid;place-items:center;padding:1rem;z-index:40;}
   .modal{background:var(--surface);border-radius:20px;max-width:440px;width:100%;max-height:90vh;overflow:auto;box-shadow:var(--shadow);}
-  .modal .mh{height:120px;display:grid;place-items:center;font-size:3.4rem;background:linear-gradient(135deg,var(--green-s),var(--amber-s));position:relative;}
+  .modal .mh{height:155px;background-size:cover;background-position:center;background-color:var(--green-s);position:relative;}
   .modal .mc{padding:1.2rem 1.3rem 1.4rem;}
   .modal h3{margin:0 0 .15rem;font-size:1.25rem;}
   .row{display:flex;justify-content:space-between;gap:1rem;font-size:.9rem;padding:.4rem 0;border-bottom:1px dashed var(--line);}
@@ -132,12 +141,16 @@
   <main>
     <!-- ===================== МАГАЗИН ===================== -->
     <section id="view-store">
-      <div class="hero"><div class="hero-txt">
-        <b>Спасай еду. Экономь.</b>
-        <div class="en">Save Food. Save Money.</div>
-        <p>Свежие боксы из кофеен и пекарен Астаны, которые иначе бы списали. Скидка 40–70%, самовывоз сегодня.</p>
-        <div class="pills"><span class="pill2">🥗 Surprise Box</span><span class="pill2">🌿 Green Deal</span><span class="pill2">♻ Eco solution</span></div>
-      </div><div class="hero-em">🥐</div></div>
+      <div class="hero">
+        <div class="hero-txt">
+          <b>Спасай еду. Экономь.</b>
+          <div class="en">Save Food. Save Money.</div>
+          <p>Свежие боксы из кофеен и пекарен Астаны, которые иначе бы списали. Скидка 40–70%, самовывоз сегодня.</p>
+          <div class="pills"><span class="pill2">🥗 Surprise Box</span><span class="pill2">🌿 Green Deal</span><span class="pill2">♻ Eco solution</span></div>
+        </div>
+        <div class="hero-card"><img src="/static/img/hero.jpg" alt="Surprise box" loading="eager" />
+          <div class="tag"><b>990 ₸</b><s>2 500 ₸</s><em>ценность внутри</em></div></div>
+      </div>
       <div class="chips" id="districts"></div>
       <div class="grid" id="boxes"></div>
       <div id="myorders" style="margin-top:1.8rem"></div>
@@ -235,14 +248,24 @@ async function loadStore(){
   document.querySelectorAll(".box").forEach(el=>el.onclick=()=>openBox(el.dataset.id));
   renderMyOrders();
 }
+const IMG={sweet:"sweet.jpg",bakery:"bakery.jpg",mixed:"mixed.jpg",snack:"snack.jpg"};
+const IMG_ALT={sweet:"dessert.jpg",bakery:"bread.jpg"};
+function imgFor(b){
+  const t=(b.title||"").toLowerCase();
+  if(t.includes("donut")||t.includes("пончик"))return "sweet.jpg";
+  if(t.includes("dessert")||t.includes("десерт"))return "dessert.jpg";
+  const alt=IMG_ALT[b.category];
+  if(alt && (String(b.id).charCodeAt(String(b.id).length-1)&1)) return alt;
+  return IMG[b.category]||"mixed.jpg";
+}
 function boxCard(b){
   const fomo=b.qty_left<=3;
   return `<article class="box" data-id="${b.id}">
-    <div class="top">${b.emoji}
+    <div class="top" style="background-image:url(/static/img/${imgFor(b)})">
       <span class="disc">−${b.discount}%</span>
-      <span class="left${fomo?" fomo":""}">${fomo?"🔥 ":""}осталось ${b.qty_left}</span></div>
+      <span class="left${fomo?" fomo":""}">${fomo?"🔥 ":""}осталось ${b.qty_left}</span>
+      <span class="catchip">${esc(b.category_ru)}</span></div>
     <div class="body">
-      <div class="cat">${esc(b.category_ru)}</div>
       <div class="name">${esc(b.title||b.partner_name)}</div>
       <div class="meta">${esc(b.partner_name)} · ${esc(b.district)} · ★${b.rating}</div>
       <div class="win">⏱ ${win(b.pickup_from,b.pickup_to)}</div>
@@ -251,7 +274,7 @@ function boxCard(b){
 }
 async function openBox(id){
   let b;try{b=await get("/boxes/"+id);}catch(e){toast(e.message,true);return;}
-  showModal(`<div class="mh">${b.emoji}<button class="x" onclick="closeModal()">✕</button></div>
+  showModal(`<div class="mh" style="background-image:url(/static/img/${imgFor(b)})"><button class="x" onclick="closeModal()">✕</button></div>
     <div class="mc">
       <div class="cat" style="color:var(--green-d);font-size:.74rem;font-weight:700;text-transform:uppercase">${esc(b.category_ru)}</div>
       <h3>${esc(b.title||b.partner_name)}</h3>
